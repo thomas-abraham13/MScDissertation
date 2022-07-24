@@ -10,12 +10,12 @@ def elo(r1,r2,k,s1,s2,Team1,Team2):
     R2=pow(10,r2/400)           #R2=10^(r2/400)
     E1=R1/(R1+R2)
     E2=R2/(R1+R2)
-    print(Team1,"has ",int(E1*100),"%to win")
-    print(Team2,"has",int(E2*100),"%to win")
+    print(Team1,"has",int(E1*100),"% to Win")
+    print(Team2,"has",int(E2*100),"% to Win")
     if s1==1:
-        print(Team1 , "won")
+        print(Team1,"Won")
     else:
-        print(Team2,"won")
+        print(Team2,"Won")
     r1_cap=r1+k*(s1-E1)
     r2_cap=r2+k*(s2-E2)
     return r1_cap,r2_cap
@@ -32,9 +32,9 @@ for i in range(0,40):
 for row in reader:
     if j!=0:
         s=re.split('\W+',row[2])
-        if row[1]=='10/25/2016':
+        if row[1]=='12/22/2020':    # 2020-21 Start: 22 December 2020
             flag=1
-        if row[1]=='04/15/2017':
+        if row[1]=='07/20/2021':    # 2020-21 End: 22 July 2021
             flag=0
         if len(s)==2 and flag==1:
             print("Match", j)
@@ -55,7 +55,8 @@ for row in reader:
     else:
         j=1
 
-print(accuracy,j-1,accuracy/(j-1))
+# print(accuracy,j-1,accuracy/(j-1))
+print(accuracy,j-1)
 print("SEASON 2021-22")
 dataFile=open('TeamMatchups2020-21.csv','r')
 reader=csv.reader(dataFile)
@@ -74,7 +75,7 @@ accuracy=0
 for row in reader:
     if j!=0:
         s=re.split('\W+',row[2])
-        
+
         if len(s)==2 and flag==1:
             print("Match", j)
             Team1=s[0]
@@ -93,7 +94,7 @@ for row in reader:
             print("PRED", PRED[j])
             teams_rating[Team1],teams_rating[Team2]=elo(teams_rating[Team1],teams_rating[Team2],20,s1,s2,Team1,Team2)
             print(Team1,"rating",teams_rating[Team1],Team2,"rating",teams_rating[Team2])
-            #time.sleep(2)
+            #time.sleep(1)
             j=j+1
     else:
         j=1

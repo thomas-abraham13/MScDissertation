@@ -59,8 +59,8 @@ def func1():
             j=1
 
     print(accuracy,j-1,accuracy/(j-1))
-    print("season 2017-18")
-    dataFile=open('TeamMatchups2017-18.csv','r')
+    print("season 2020-21")
+    dataFile=open('TeamMatchups2020-21.csv','r')
     reader=csv.reader(dataFile)
     j=0
     flag=1
