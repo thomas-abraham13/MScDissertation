@@ -1,7 +1,7 @@
 # makePastPredictions.py - Used to predicts specified range of past NBA Games
 
 import pickle
-import sklearn.linear_model.logistic
+#import sklearn.linear_model.logistic
 import pandas as pd
 
 from createModel import getTrainingSet, createDataFrame
