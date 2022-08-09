@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import function as f
 
-#Season 2020-2021
+#Season 2019-2020
 csv_file1 = open('TeamMatchups.csv', 'r')
 reader1 = csv.reader(csv_file1)
 i = 0
@@ -81,7 +81,7 @@ for row1 in reader1:
                                 #print(row2[0])
                                 check[row2[0]+Team2] = 'Filled'
                         else:
-                            print("HHHHHHHHHEEEEEEEEEEELLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                            print("Break")
                 j = j + 1
             j = 0
             csv_file2.close()
@@ -115,11 +115,7 @@ for row1 in reader1:
             for players in minutesPlayed[Team2]:
                 m2 += playerRating[players] * minutesPlayedEstimate[players]
                 p2+=playerRating[players]
-            #print("%%%%%%%%%%%%%%%%%  Before Update %%%%%%%%%%%%%%%%")
-            #print("Updated rating for {}".format(Team1), round(p1))
-            #print("updated rating for {}".format(Team2), round(p2))
-            #print("p2",p2)
-            #print("total1",p1+p2)
+
             sumTeam = 0
             for Teeam in minutesPlayed:
                 for player in minutesPlayed[Teeam]:
@@ -165,18 +161,7 @@ reader1 = csv.reader(csv_file1)
 i = 0
 j = 0
 noOfPredictions = 0
-#minutesPlayed = defaultdict(dict)
-#minutesPlayedEstimate = defaultdict(dict)
-#NumberMinutes=defaultdict(dict)
-#playerRating = defaultdict(dict)
-#plusminus = defaultdict(dict)
-#duplicate = defaultdict(dict)
-#tempTeam = defaultdict(dict)
-#check = defaultdict(dict)
-#TeamRating = defaultdict(dict)
-#HomeAdv = defaultdict(dict)
-#checklist = []
-#flog = 1
+
 match = 0
 avg=[]
 number=0
@@ -259,21 +244,17 @@ for row1 in reader1:
             for players in minutesPlayed[Team2]:
                 m2 += playerRating[players] * minutesPlayedEstimate[players]
                 p2+=playerRating[players]
-            #print("%%%%%%%%%%%%%%%%%  Before Update %%%%%%%%%%%%%%%%")
-            #print("Updated rating for {}".format(Team1), round(p1))
-            #print("updated rating for {}".format(Team2), round(p2))
-            #print("p2",p2)
-            #print("total1",p1+p2)
+
             sumTeam = 0
             for Teeam in minutesPlayed:
                 for player in minutesPlayed[Teeam]:
                     sumTeam = sumTeam + playerRating[player]
-                    # print(Teeam,TeamRating[Teeam])
+
             #print(Team1,p1)
             #print(Team2,p2)
             #print("total1",p1+p2)
             #print("Sum of team rating1", sumTeam)
-            #time.sleep(2)
+
             m1+=HomeAdv[Team1]
             m2 += HomeAdv[Team2]
             if m1 > m2:
