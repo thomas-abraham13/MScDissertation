@@ -160,7 +160,7 @@ for row1 in reader1:
 csv_file1.close()
 
 print("Season 2020-21")
-csv_file1 = open('TeamMatchups2020-21.csv', 'r')
+csv_file1 = open('TeamMatchups2019-20.csv', 'r')
 reader1 = csv.reader(csv_file1)
 i = 0
 j = 0
@@ -227,7 +227,7 @@ for row1 in reader1:
                             #print(row2[0])
                             check[row2[0]+Team2] = 'Filled'
                     else:
-                        print("HHHHHHHHHEEEEEEEEEEELLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                        print("Break")
             csv_file2.close()
             checklist.append(c)
             for fixedPlayer in minutesPlayed[Team1]:
@@ -308,5 +308,3 @@ plt.plot(PRED)
 plt.xlabel("MATCH NUMBER")
 plt.ylabel("PREDICTION RATE")
 plt.show()
-
-

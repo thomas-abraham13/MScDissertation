@@ -4,7 +4,7 @@ import pickle
 #import sklearn.linear_model.logistic
 import pandas as pd
 
-from createModel import getTrainingSet, createDataFrame
+from createModel import getTrainingSet, createDataFrame, performLogReg
 from configureCWD import setCurrentWorkingDirectory
 
 
@@ -17,8 +17,9 @@ def getTrainingSetCSV(startYear, startMonth, startDay, endYear, endMonth, endDay
     # Gets date, teams, and z-score difs for every game within range
     rangeOfGames = getTrainingSet(startYear, startMonth, startDay, endYear, endMonth, endDay, season, startDateOfSeason)
     rangeOfGamesDataframe = createDataFrame(rangeOfGames)
+    accucheck = performLogReg(rangeOfGamesDataframe)
 
-    setCurrentWorkingDirectory('Data')
+    setCurrentWorkingDirectory('data')
 
     rangeOfGamesDataframe.to_csv(filename)
 
@@ -36,7 +37,7 @@ def getPredictionsCSV(gameDataFilename, outputFilename):
     justZScoreDifs = gamesWithZScoreDifs.loc[:, 'W_PCT':'TS_PCT']  # Slices dataframe to only include statistical differences
 
     setCurrentWorkingDirectory('models')
-    with open('finalized_model.pkl', 'rb') as file:  # Change filename here if model is named differently
+    with open('model.pkl', 'rb') as file:  # Change filename here if model is named differently
         pickleModel = pickle.load(file)
 
     predictions = pickleModel.predict(justZScoreDifs)  # Creates list of predicted winners and losers
@@ -93,6 +94,6 @@ def makePastPredictions(startYear, startMonth, startDay, endYear, endMonth, endD
 # season(yyyy-yy), start date of season (mm/dd/yyyy), .csv filename for games with z score differences,
 # .csv filename for games with predictions
 # EDIT THIS
-makePastPredictions(2018, 12, 28, 2019, 1, 13, '2018-19', '10/16/2018',
+makePastPredictions(2018, 12, 27, 2019, 1, 13, '2018-19', '10/16/2018',
                     'gamesWithInfo.csv', 'predictions.csv')
 
