@@ -13,6 +13,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 import pandas as pd
 import pickle
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 from datetime import timedelta, date
 
@@ -172,6 +174,9 @@ def performLogReg(dataframe):
 
     print('Confusion Matrix:')
     print(confusionMatrix)
+
+    sns.heatmap(confusionMatrix, annot=True)
+    plt.show()
 
     return logreg
 

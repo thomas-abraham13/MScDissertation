@@ -35,9 +35,9 @@ def func1():
     for row in reader:
         if j!=0:
             s=re.split('\W+',row[2])
-            if row[1]=='12/22/2020':
+            if row[1]=='10/16/2018':    #10/16/2018
                 flag=1
-            if row[1]=='07/22/2021':
+            if row[1]=='06/10/2019':    #06/10/2019
                 flag=0
             if len(s)==2 and flag==1:
                 print("Match", j)
@@ -102,9 +102,9 @@ def func1():
 
     print(accuracy,j-1,accuracy/(j-1))
     print(PRED)
-    #plt.plot(PRED[1:1231],color='r')
-    #plt.xlabel("MATCH NUMBER")
-    #plt.ylabel("PREDICTION RATE")
-    #plt.title("NBA 2017-18 season")
-    #plt.show()
+    plt.plot(PRED[1:1231],color='r')
+    plt.xlabel("MATCH NUMBER")
+    plt.ylabel("PREDICTION RATE")
+    plt.title("NBA 2017-18 season")
+    plt.show()
     return(PRED[1:1231])
