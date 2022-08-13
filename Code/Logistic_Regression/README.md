@@ -21,12 +21,11 @@ pip3 install -r requirements.txt
 
 2. Edit the call to makeInterpretPrediction with desired date of games, season, and the start date of the season
 
-
+![image](https://user-images.githubusercontent.com/29597130/184464636-70bce8c4-d107-40eb-b081-eec9cc4c860b.png)
 
 3. Run the program either through the terminal or an IDE
 
-
-4. Outcomes are outputted as the percent chance that the home team will beat the away team
+4. Outcomes are displayed as the percent chance that the home team will beat the away team
 
 # Generate Past Predicitons for Analysis:
 1. Open makePastPredictions.py
@@ -35,10 +34,16 @@ pip3 install -r requirements.txt
 
 NOTE: The start date should be at least three days after the season begins
 
+![image](https://user-images.githubusercontent.com/29597130/184464663-6ac00692-cb37-4994-a5ed-8b1eb2d66066.png)
+
 3. Run the program either through the terminal or an IDE
 
 4. Two CSV files will be saved in the Data folder. One holds the gameData and the other holds the predictions for the games.
 
 # Accuracy Information:
 
+![image](https://user-images.githubusercontent.com/29597130/184464677-ba033da8-71c6-4feb-a1b4-287cd6c5f74c.png)
+
 # Confusion Matrix:
+
+![image](https://user-images.githubusercontent.com/29597130/184464723-e93cf21a-278a-40fa-84cc-3a763c5c8ee9.png)
