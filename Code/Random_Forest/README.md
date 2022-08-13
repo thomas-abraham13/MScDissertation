@@ -1,31 +1,26 @@
-# Predicting NBA Game Winners
+# Predicting NBA Regular Season Results
 
 ## Overview
 
-This project is based on a lecture by Robert Layton given at PyCon Australia, 2015. The goal is to build predictive models that determines whether the home team will win an NBA regular season basketball game, then evaluate the how well the models perform. The data used is from the 2012-13, 2013-14, and 2014-15 NBA seasons.
+The aim is to build predictive models that determines whether the home team will win an NBA regular season basketball game and then determine the teams seed. The data used is from the 2018-19, 2019-20, and 2020-21 NBA seasons.
 
 ## Python Libraries Used
 
 Numpy <br>
 Pandas<br>
-sci-kit learn
+Sci-kit Learn
 
 ## Models Used
 
 Decision Trees <br>
 Random Forest
 
-## What's In This Repository?
+## Dataset Used:
 
-Datasets (folder)
-  * 2012-2013 Regular Season Standings.csv
-  * NBA Regular Season Results 2013-2014.csv
-  * 2013-2014 Regular Season Standings.csv
-  * NBA Regular Season Results 2014-2015.csv
+datasets (folder)
+  * 2018-2019 Regular Season Standings.csv
+  * NBA Regular Season Results 2019-2020.csv
+  * 2019-2020 Regular Season Standings.csv
+  * NBA Regular Season Results 2020-2021.csv
 
 Predicting NBA Game Winners.ipynb (Jupyter Notebook)
-
-## Additional Resources
-
-Recording of lecture: https://youtu.be/k7hSD_-gWMw <br>
-The dataset for this project was retrieved from: www.basketball-reference.com
