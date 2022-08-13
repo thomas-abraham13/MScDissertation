@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import function as f
 
-#Season 2019-2020
+#Season 2018-2019
 csv_file1 = open('TeamMatchups.csv', 'r')
 reader1 = csv.reader(csv_file1)
 i = 0

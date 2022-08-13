@@ -1,13 +1,11 @@
-# getStats.py - Obtains a grouping of stats for any team in the NBA
+# Gets a grouping of stats for any team in the NBA
 
 from teamIds import teams
 from nba_api.stats.endpoints import teamdashboardbygeneralsplits, leaguedashteamstats
 import time
 from customHeaders import customHeaders
 
-# Returns various stats for inputted team in a dictionary
 # team should match team name in teamIds.py
-# startDate and endDate should be in format 'mm/dd/yyyy'
 def getStatsForTeam(team, startDate, endDate, season='2019-20'):
 
     time.sleep(1)
@@ -16,7 +14,7 @@ def getStatsForTeam(team, startDate, endDate, season='2019-20'):
     generalTeamDict = generalTeamInfo.get_normalized_dict()
     generalTeamDashboard = generalTeamDict['OverallTeamDashboard'][0]
 
-    # Returns Win PCT, Rebounds, Turnovers, and Plus Minus
+    # Returns Win PCT, Rebounds, Turnovers, and Plus-Minus
     winPercentage = generalTeamDashboard['W_PCT']
     rebounds = generalTeamDashboard['REB']
     turnovers = generalTeamDashboard['TOV']
@@ -32,7 +30,7 @@ def getStatsForTeam(team, startDate, endDate, season='2019-20'):
     defensiveRating = advancedTeamDashboard['DEF_RATING']
     trueShootingPercentage = advancedTeamDashboard['TS_PCT']
 
-    # Puts all the stats for specified team into a dictionary
+    # Puts all the stats for specified team into dictionary
     allStats = {
         'W_PCT':winPercentage,
         'REB':rebounds,

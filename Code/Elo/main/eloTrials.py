@@ -68,15 +68,15 @@ def func1():
     Teams=['ATL','BOS','BKN','CHA','CHI','CLE','DAL','DEL','DEN','DET','EST','FCB','GSW','HOU','IND','LAC','LAL','MAC','MEM','MIA','MIL','MIN','NOP','NYK','OKC','ORL','PHI','PHX','POR','RMD','SAC','SAS','SDS','SLA','TOR','USA','UTA','WAS','WLD','WST']
     #teams_rating = collections.OrderedDict()
     accuracy=0
-    #for i in range(0,40):
-    #    teams_rating[Teams[i]]=1000
+    for i in range(0,40):
+        teams_rating[Teams[i]]=1000
     for row in reader:
         if j!=0:
             s=re.split('\W+',row[2])
-            #if row[1]=='10/25/2016':
-             #   flag=1
-            #if row[1]=='04/15/2017':
-            #    flag=0
+            if row[1]=='10/25/2016':
+                flag=1
+            if row[1]=='04/15/2017':
+                flag=0
             if len(s)==2 and flag==1:
                 print("Match", j)
                 Team1=s[0]

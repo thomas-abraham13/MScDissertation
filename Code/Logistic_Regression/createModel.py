@@ -1,13 +1,11 @@
-# createModel.py - Used to train, test, and create the model
+# Execute: python createModel.py - Used to train, test, and create the model
 # Call createModel() to generate a new model
-# May need to edit which lines are commented out based on what range of game data you would like to use
 
 from standardizeStats import basicOrAdvancedStatZScore, basicOrAdvancedStatStandardDeviation, basicOrAdvancedStatMean
 from getDailyMatchups import dailyMatchupsPast
 from getStats import getStatsForTeam
 from availableStats import availableStats
 from configureCWD import setCurrentWorkingDirectory
-
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
@@ -15,9 +13,7 @@ import pandas as pd
 import pickle
 import seaborn as sns
 import matplotlib.pyplot as plt
-
 from datetime import timedelta, date
-
 
 # Calculates the zScore differential between two teams for a specified stat
 def zScoreDifferential(observedStatHome, observedStatAway, mean, standardDeviation):
@@ -30,7 +26,6 @@ def zScoreDifferential(observedStatHome, observedStatAway, mean, standardDeviati
 
 
 # Used to combine and format all the data to be put into a pandas dataframe
-# dailyGames should be list where index 0 is a dictionary holding the games and index 1 is a list holding the results
 def infoToDataFrame(dailyGames, meanDict, standardDeviationDict, startDate, endDate, season):
 
     fullDataFrame = []
@@ -41,7 +36,6 @@ def infoToDataFrame(dailyGames, meanDict, standardDeviationDict, startDate, endD
 
         homeTeamStats = getStatsForTeam(homeTeam, startDate, endDate, season)
         awayTeamStats = getStatsForTeam(awayTeam, startDate, endDate, season)
-
         currentGame = [homeTeam,awayTeam]
 
         for stat,statType in availableStats.items():  # Finds Z Score Dif for stats listed above and adds them to list
@@ -50,32 +44,30 @@ def infoToDataFrame(dailyGames, meanDict, standardDeviationDict, startDate, endD
 
         if dailyResults[gameNumber] == 'W':  # Sets result to 1 if a win
             result = 1
-        else:  # Sets result to 0 if loss
+        else:                                # Sets result to 0 if loss
             result = 0
 
         currentGame.append(result)
         gameNumber += 1
 
         print(currentGame)
-        fullDataFrame.append(currentGame)  # Adds this list to list of all games on specified date
+        fullDataFrame.append(currentGame)
 
     return(fullDataFrame)
 
 
-# Function that allows iterating through specified start date to end date
+# Iterates from start to end date
 def daterange(startDate, endDate):
 
     for n in range(int ((endDate - startDate).days)):
         yield startDate + timedelta(n)
 
-
-# Returns a list. Index 0 is a dict holding mean for each stat. Index 1 is a dict holding standard deviation for each stat.
 def createMeanStandardDeviationDicts(startDate, endDate, season):
 
     meanDict = {}
     standardDeviationDict = {}
 
-    # Loops through and inputs standard deviation and mean for each stat into dict
+    # Loops through and inputs standard deviation and mean for each stat into dictionary
     for stat, statType in availableStats.items():
         statMean = basicOrAdvancedStatMean(startDate, endDate, stat, statType, season)
         meanDict.update({stat: statMean})
@@ -89,19 +81,17 @@ def createMeanStandardDeviationDicts(startDate, endDate, season):
 
     return bothDicts
 
-
-# Loops through every date between start and end and appends each game to a singular list to be returned
-# season should be in format 'yyyy-yy' and startOfSeason should be in format 'mm/dd/yyyy'
+# Loops through every date between start and end and appends each game to a list
 def getTrainingSet(startYear, startMonth, startDay, endYear, endMonth, endDay, season, startOfSeason):
 
     startDate = date(startYear, startMonth, startDay)
     endDate = date(endYear, endMonth, endDay)
 
-    startDateFormatted = startDate.strftime("%m/%d/%Y")  # Formats start date in mm/dd/yyyy
+    startDateFormatted = startDate.strftime("%m/%d/%Y")  # Date as mm/dd/yyyy
     allGames = []
 
     for singleDate in daterange(startDate, endDate):
-        currentDate = singleDate.strftime("%m/%d/%Y")  # Formats current date in mm/dd/yyyy
+        currentDate = singleDate.strftime("%m/%d/%Y")  # Date as mm/dd/yyyy
         print(currentDate)
 
         previousDay = singleDate - timedelta(days=1)
@@ -121,7 +111,6 @@ def getTrainingSet(startYear, startMonth, startDay, endYear, endMonth, endDay, s
     print(allGames)
     return(allGames)
 
-
 # Returns a dataframe from list of games with z score differentials
 def createDataFrame(listOfGames):
 
@@ -134,10 +123,9 @@ def createDataFrame(listOfGames):
     return(games)
 
 
-# Creates the logistic regression model and tests accuracy
+# Creates the logistic regression model and test accuracy
 def performLogReg(dataframe):
 
-    # Update if new stats are added
     featureColumns = ['W_PCT', 'REB', 'TOV', 'PLUS_MINUS', 'OFF_RATING', 'DEF_RATING', 'TS_PCT']
 
     X = dataframe[featureColumns] # Features
@@ -181,11 +169,10 @@ def performLogReg(dataframe):
     return logreg
 
 
-# Saves the model in folder to be used in future
-# filename should be end in '.pkl'
+# Saves the model in folder
 def saveModel(model, filename):
 
-    # Change to where you want to save the model
+    # Change directory based on where models should be saved
     setCurrentWorkingDirectory('models')
 
     with open(filename, 'wb') as file:
@@ -196,12 +183,12 @@ def saveModel(model, filename):
 # Can import the statistics and predictions for each game from a csv file or can be created on their own
 def createModel(startYear=None, startMonth=None, startDay=None, endYear=None, endMonth=None, endDay=None, season='2018-19', startOfSeason = '10/16/2018', filename='model.pkl'):
 
-    # allGames = getTrainingSet(startYear, startMonth, startDay, endYear, endMonth, endDay, season, startOfSeason)  # Unnecessary if using data from CSV file
+    # allGames = getTrainingSet(startYear, startMonth, startDay, endYear, endMonth, endDay, season, startOfSeason)  # Comment statement if using CSV file data
 
-    # allGamesDataframe = createDataFrame(allGames)  # Unnecessary if using data from CSV file
+    # allGamesDataframe = createDataFrame(allGames)  # Comment statement if using CSV file data
 
     setCurrentWorkingDirectory('Data')
-    allGamesDataframe = pd.read_csv('COMBINEDgamesWithInfo2016-19.csv')  # Should be commented out if needing to obtain data on different range of games
+    allGamesDataframe = pd.read_csv('COMBINEDgamesWithInfo2018-21.csv')  # Comment statement if data is required from different seasons
 
     logRegModel = performLogReg(allGamesDataframe)
 

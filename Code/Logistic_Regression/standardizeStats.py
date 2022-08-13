@@ -1,4 +1,4 @@
-# standardizeStats.py - Uses Z Scores ((Obs  - Mean) / St Dev.) to standardize any of the different statistics scraped
+# standardizeStats.py - Uses Z Scores ((Obs  - Mean) / Standard Deviation) to standardize any of the different statistics scraped
 
 from nba_api.stats.endpoints import leaguedashteamstats
 import statistics
@@ -22,12 +22,11 @@ def basicOrAdvancedStatMean(startDate, endDate, stat,statType = 'Base', season='
     allTeamsList = allTeamsDict['LeagueDashTeamStats']
 
     specificStatAllTeams = []
-    for i in range(len(allTeamsList)):  # Loops through and appends specific stat to new list until every team's stat has been added
+    for i in range(len(allTeamsList)):
         specificStatAllTeams.append(allTeamsList[i][stat])
 
-    mean = statistics.mean(specificStatAllTeams)  # Finds mean of stat
+    mean = statistics.mean(specificStatAllTeams)  # Finds mean of statistic
     return mean
-
 
 # Finds league standard deviation for the entered basic or advanced statistic (statType = 'Base' or 'Advanced')
 def basicOrAdvancedStatStandardDeviation(startDate, endDate, stat,statType = 'Base', season='2018-19'):
@@ -46,12 +45,11 @@ def basicOrAdvancedStatStandardDeviation(startDate, endDate, stat,statType = 'Ba
     allTeamsList = allTeamsDict['LeagueDashTeamStats']
 
     specificStatAllTeams = []
-    for i in range(len(allTeamsList)):  # Loops and appends specific stat to new list until every team's stat has been added
+    for i in range(len(allTeamsList)):
         specificStatAllTeams.append(allTeamsList[i][stat])
 
-    standardDeviation = statistics.stdev(specificStatAllTeams)  # Finds standard deviation of stat
+    standardDeviation = statistics.stdev(specificStatAllTeams)  # Finds standard deviation of statistic
     return standardDeviation
-
 
 # Returns a standardized version of each data point via the z-score method
 def basicOrAdvancedStatZScore(observedStat, mean, standardDeviation):

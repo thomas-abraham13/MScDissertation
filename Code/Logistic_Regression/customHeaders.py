@@ -1,5 +1,5 @@
-# customHeaders.py
-# Used to make requests seem like they're coming from browser
+# Make requests seem like they're coming from browser
+
 customHeaders = {
     'Host': 'stats.nba.com',
     'Connection': 'keep-alive',
