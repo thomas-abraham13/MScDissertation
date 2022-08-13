@@ -42,7 +42,7 @@ NOTE: The start date should be at least three days after the season begins
 
 # Accuracy Information:
 
-![image](https://user-images.githubusercontent.com/29597130/184464677-ba033da8-71c6-4feb-a1b4-287cd6c5f74c.png)
+![image](https://user-images.githubusercontent.com/29597130/184464772-dd436e53-ab69-494f-b787-857d18d148b7.png)
 
 # Confusion Matrix:
 
