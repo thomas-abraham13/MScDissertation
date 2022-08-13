@@ -12,7 +12,7 @@ The model uses eight factors scraped from stats.nba.com to predict the result of
 * Defensive Rating
 * True Shooting Percentage
 
-## Run before execution:
+## Runn before execution:
 pip3 install -r requirements.txt
 
 
