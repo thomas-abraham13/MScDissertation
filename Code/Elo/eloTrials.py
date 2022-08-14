@@ -23,7 +23,7 @@ def elo(r1,r2,k,s1,s2,Team1,Team2):
     return r1_cap,r2_cap
 
 dataFile=open('scraping/RegularSeasonteamstats.csv','r')
-csvFile=open('scraping/syntheticDataMatchup.csv','w')
+#csvFile=open('scraping/syntheticDataMatchup.csv','w')
 #writer=csv.writer(csvFile)
 reader=csv.reader(dataFile)
 #writer.writerow(['Team1','Team2'])
@@ -82,7 +82,7 @@ for row in reader:
             print(Team1,"rating",teams_rating[Team1],Team2,"rating",teams_rating[Team2])
     j=j+1
 print(accuracy)
-csvFile.close()
+#csvFile.close()
 for i in range(0,40):
     print(Teams[i],teams_rating[Teams[i]])
 EST=['ATL','BOS','BKN','CHA','CHI','CLE','DET','IND','MIA','MIL','NYK','ORL','PHI','TOR','WST']
