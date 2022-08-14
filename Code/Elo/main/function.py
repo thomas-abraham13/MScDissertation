@@ -70,7 +70,7 @@ def elo(playerRating, minutesPlayed, Team1, Team2, TotTime, plusminus1,plusminus
         sum=sum+playerRating[fixedPlayer]
 
     for fixedPlayer in minutesPlayed[Team2]:
-        Offset[fixedPlayer] = 5*minutesPlayed[Team2][fixedPlayer] * (2 * Offset[fixedPlayer] - Sum/w2)
+        Offset[fixedPlayer] = 5*minutesPlayed[Team2][fixedPlayer] * (2 * Offset[fixedPlayer] - (Sum/w2+1))
         playerRating[fixedPlayer] = playerRating[fixedPlayer] + Offset[fixedPlayer]
         offset = Offset[fixedPlayer] + offset
         sum=sum+playerRating[fixedPlayer]

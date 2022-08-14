@@ -29,17 +29,12 @@ match = 0
 avg=[]
 number=0
 flag=0
-Dray=[]
-James=[]
-Bruno=[]
-Curry=[]
-Jordan=[]
+
 for row1 in reader1:
     plusminus1 = defaultdict(dict)
     plusminus2 = defaultdict(dict)
     if i > 0:
         s = re.split('\W+', row1[2])
-        # print(s)
         if len(s) == 2:
             Team1 = s[0]
             Team2 = s[1]
@@ -61,8 +56,7 @@ for row1 in reader1:
                 if j > 0:
 
                     if (Team1 == row2[1] or Team2 == row2[1]) and row1[1] == row2[2]:
-                        # print(row2[0],"playername",row2[1],"team",row2[2],"date")
-                        # time.sleep(2)
+
                         if int(row2[5])!=0:
                             avg.append(int(row2[6])/int(row2[5]))
                             number+=1
@@ -71,14 +65,12 @@ for row1 in reader1:
                             plusminus1[row2[0]+Team1] = int(row2[7])
                             if check[row2[0]+Team1] == {}:
                                 playerRating[row2[0]+Team1] = 1000
-                                #print(row2[0])
                                 check[row2[0]+Team1] = 'Filled'
                         elif Team2==row2[1]:
                             minutesPlayed[Team2][row2[0]+Team2] = int(row2[5]) / (int(row1[4]))
                             plusminus2[row2[0]+Team2] = int(row2[7])
                             if check[row2[0]+Team2] == {}:
                                 playerRating[row2[0]+Team2] = 1000
-                                #print(row2[0])
                                 check[row2[0]+Team2] = 'Filled'
                         else:
                             print("Break")
@@ -88,7 +80,6 @@ for row1 in reader1:
             checklist.append(c)
             for fixedPlayer in minutesPlayed[Team1]:
                 if minutesPlayedEstimate[fixedPlayer] == {}:
-                    #print(fixedPlayer)
                     minutesPlayedEstimate[fixedPlayer] = minutesPlayed[Team1][fixedPlayer]
                     NumberMinutes[fixedPlayer] = 1
                 else:
@@ -104,7 +95,6 @@ for row1 in reader1:
                                                       minutesPlayed[Team2][fixedPlayer]) / (NumberMinutes[fixedPlayer] + 1)
                     NumberMinutes[fixedPlayer] = NumberMinutes[fixedPlayer] + 1
 
-            # rating update for the 2 teams
             m1 = 0
             m2 = 0
             p1=0
@@ -115,17 +105,11 @@ for row1 in reader1:
             for players in minutesPlayed[Team2]:
                 m2 += playerRating[players] * minutesPlayedEstimate[players]
                 p2+=playerRating[players]
-
             sumTeam = 0
             for Teeam in minutesPlayed:
                 for player in minutesPlayed[Teeam]:
                     sumTeam = sumTeam + playerRating[player]
-                    # print(Teeam,TeamRating[Teeam])
-            #print(Team1,p1)
-            #print(Team2,p2)
-            #print("total1",p1+p2)
-            #print("Sum of team rating1", sumTeam)
-            #time.sleep(2)
+
             m1+=HomeAdv[Team1]
             m2 += HomeAdv[Team2]
             if m1 > m2:
@@ -155,13 +139,12 @@ for row1 in reader1:
     i = i + 1
 csv_file1.close()
 
-print("Season 2020-21")
-csv_file1 = open('TeamMatchups2019-20.csv', 'r')
+print("Season 2018-19")
+csv_file1 = open('TeamMatchups2018-19.csv', 'r')
 reader1 = csv.reader(csv_file1)
 i = 0
 j = 0
 noOfPredictions = 0
-
 match = 0
 avg=[]
 number=0
@@ -172,7 +155,6 @@ for row1 in reader1:
     plusminus2 = defaultdict(dict)
     if i > 0:
         s = re.split('\W+', row1[2])
-        # print(s)
         if len(s) == 2:
             Team1 = s[0]
             Team2 = s[1]
@@ -188,12 +170,10 @@ for row1 in reader1:
             for fixedPlayer in minutesPlayed[Team2]:
                 minutesPlayed[Team2][fixedPlayer] = 0
                 plusminus2[fixedPlayer]=0
-            csv_file2 = open('PlayerDetails2017-2018.csv', 'r')
+            csv_file2 = open('PlayerDetails2018-2019.csv', 'r')
             reader2 = csv.reader(csv_file2)
             for row2 in reader2:
                 if (Team1 == row2[1] or Team2 == row2[1]) and row1[1] == row2[2]:
-                    # print(row2[0],"playername",row2[1],"team",row2[2],"date")
-                    # time.sleep(2)
                     if int(row2[5])!=0:
                         avg.append(int(row2[6])/int(row2[5]))
                         number+=1
@@ -202,14 +182,12 @@ for row1 in reader1:
                         plusminus1[row2[0]+Team1] = int(row2[7])
                         if check[row2[0]+Team1] == {}:
                             playerRating[row2[0]+Team1] = 1000
-                            #print(row2[0])
                             check[row2[0]+Team1] = 'Filled'
                     elif Team2==row2[1]:
                         minutesPlayed[Team2][row2[0]+Team2] = int(row2[5]) / (int(row1[4]))
                         plusminus2[row2[0]+Team2] = int(row2[7])
                         if check[row2[0]+Team2] == {}:
                             playerRating[row2[0]+Team2] = 1000
-                            #print(row2[0])
                             check[row2[0]+Team2] = 'Filled'
                     else:
                         print("Break")
@@ -217,7 +195,6 @@ for row1 in reader1:
             checklist.append(c)
             for fixedPlayer in minutesPlayed[Team1]:
                 if minutesPlayedEstimate[fixedPlayer] == {}:
-                    #print(fixedPlayer)
                     minutesPlayedEstimate[fixedPlayer] = minutesPlayed[Team1][fixedPlayer]
                     NumberMinutes[fixedPlayer] = 1
                 else:
@@ -233,7 +210,6 @@ for row1 in reader1:
                                                       minutesPlayed[Team2][fixedPlayer]) / (NumberMinutes[fixedPlayer] + 1)
                     NumberMinutes[fixedPlayer] = NumberMinutes[fixedPlayer] + 1
 
-            # rating update for the 2 teams
             m1 = 0
             m2 = 0
             p1=0
@@ -249,11 +225,6 @@ for row1 in reader1:
             for Teeam in minutesPlayed:
                 for player in minutesPlayed[Teeam]:
                     sumTeam = sumTeam + playerRating[player]
-
-            #print(Team1,p1)
-            #print(Team2,p2)
-            #print("total1",p1+p2)
-            #print("Sum of team rating1", sumTeam)
 
             m1+=HomeAdv[Team1]
             m2 += HomeAdv[Team2]
@@ -288,4 +259,7 @@ csv_file1.close()
 plt.plot(PRED)
 plt.xlabel("MATCH NUMBER")
 plt.ylabel("PREDICTION RATE")
+plt.title("NBA 2018-19 season")
 plt.show()
+
+

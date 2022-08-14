@@ -1,14 +1,27 @@
-# Research
+# Elo Algorithm
 
-Welcome to my graduate thesis. In this thesis,a Elo based rating system is proposed that quantifies the strength of the basketball players.The contents of this projects can be divided as follows:
-1) Datasets
-    - Synthetic Datasets
-    - Real world dataset(NBA season 2015-2017)
-2) Screen scrapping code to generate the real world dataset.
-    - Done using the python package selenium
-3) The standard Elo rating system for predicting Wins/Losses 
-4) The proposed Elo-based system to model players and predict Wins/Losses
-5) A statistical framework to compare the standard and proposed algorithm
-    - dataset is broken into train, validation, test set 
-    - misclassification rate is computed
-    - March Madness bracket is created and the bracket is assigned a score.
+### The directories present consist of python code and datasets required to predict the final seeds of NBA teams for a regular season
+
+NOTE: The test data and results present relate to the 2018-2019 NBA Season
+
+## Directories
+
+1) dataset :
+    Contains the related datasets pertaining to varous NBA seasons 
+
+2) main :
+    Contains the main modules related to the development of the final eloRun.py file
+
+    In order to view the prediction rate, run the following command in the main directory;
+
+        python train_test.py
+
+3) plots:
+    Contains the graphs plotted to gain an understanding of player strength and prediction accuracy
+
+4) scraping:
+    Contains the python scripts used to scrape the required data directly from stats.nba.com using the package selenium
+
+Execute: python eloRun.py
+
+The above command will run the Elo Algorithm on data from the 2018-19 NBA Regular season and produce a prediction for the playoffs.

@@ -1,4 +1,4 @@
-# Predicting NBA Regular Season Results
+# Random Forest Model
 
 ## Overview
 
@@ -23,4 +23,6 @@ datasets (folder)
   * 2019-2020 Regular Season Standings.csv
   * NBA Regular Season Results 2020-2021.csv
 
-Predicting NBA Game Winners.ipynb (Jupyter Notebook)
+File: Random_Forest_Prediction.ipynb (Jupyter Notebook)
+
+To execute download the file displayed above along with the datasets and run the required code blocks sequentially.

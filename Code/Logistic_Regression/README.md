@@ -1,4 +1,4 @@
-# Model
+# Logistic Regression Model
 The model uses eight factors scraped from stats.nba.com to predict the result of an NBA game. Each stat is adjusted to per 100 possessions to ensure pace has no impact on the predictions.
 
 * Home Team (Home Court Advantage)
