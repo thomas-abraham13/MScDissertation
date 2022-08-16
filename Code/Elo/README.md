@@ -22,6 +22,8 @@ NOTE: The test data and results present relate to the 2018-2019 NBA Season
 4) scraping:
     Contains the python scripts used to scrape the required data directly from stats.nba.com using the package selenium
 
-Execute: python eloRun.py
+    In order to view the final seed generation and plaoffs predictions run; 
+
+        python eloRun.py
 
 The above command will run the Elo Algorithm on data from the 2018-19 NBA Regular season and produce a prediction for the playoffs.
